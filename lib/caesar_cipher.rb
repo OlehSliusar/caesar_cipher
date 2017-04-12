@@ -8,9 +8,3 @@ def caesar_cipher(string, shift_factor)
   end
   string
 end
-puts "Enter a string:"
-string_input = gets.chomp
-puts "Enter shift factor:"
-shift_factor_input = gets.chomp.to_i
-result_string = caesar_cipher(string_input, shift_factor_input)
-puts result_string
