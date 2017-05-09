@@ -1,5 +1,5 @@
 # spec/caesar_cipher_spec.rb
-require 'caesar_cipher'
+require_relative '../caesar_cipher'
 
 describe "#caesar_cipher" do
   it "takes in a string and the shift factor and then outputs the modified string" do
