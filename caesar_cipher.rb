@@ -1,10 +1,11 @@
-def caesar_cipher(string, shift_factor)
-  string.length.times do |i|
-    if string[i].ord >= 97 && (string[i].ord + shift_factor) <= 122 || string[i].ord >= 65 && (string[i].ord + shift_factor) <= 90
-      string[i] = (string[i].ord + shift_factor).chr
-    elsif string[i].ord >= 97 && string[i].ord <= 122 || string[i].ord >= 65 && string[i].ord <= 90
-      string[i] = (string[i].ord + shift_factor - 122 + 96).chr
-    end
-  end
-  string
+def caesar_cipher(string, shift_size)
+  mapping = Hash.new { |h,k| k }.
+                 merge(make_map('a', shift_size)).
+                 merge(make_map('A', shift_size))
+  string.gsub(/./, mapping)
+end
+
+def make_map(first_char, shift_size)
+  base = first_char.ord
+  26.times.with_object({}) { |i,h| h[(base+i).chr] = (base+((i+shift_size) % 26)).chr }
 end
